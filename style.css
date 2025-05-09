@@ -10,16 +10,21 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: seagreen;
+    background: url(assets/fundoWeather.webp);
+    background-size: cover;
+    background-position: center;
 }
 
 .container{
     position: relative;
     width: 400px;
     height: 555px;
-    background: purple;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(30px);
+    border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 16px;
     padding: 20px;
+    color: white;
 }
 
 .boxSearch{
@@ -70,3 +75,73 @@ body{
     cursor: pointer;
 }
 
+.boxClima{
+    text-align: center;
+    margin: 40px 0;
+}
+
+.boxClima img{
+    width: 60%;
+}
+
+.boxClima .temperatura{
+    position: relative;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 700;
+    margin: 20px 0 6px -30px;
+}
+
+.boxClima .temperatura span{
+    position: absolute;
+    font-size: 24px;
+    margin-left: 4px;	
+}
+
+.boxClima .descricao{
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.climaDetails{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+}
+
+.climaDetails .umidade,
+.climaDetails .vento{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.climaDetails .umidade{
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.climaDetails .vento{
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.climaDetails i{
+    font-size: 56px;
+    margin-right: 10px;
+}
+
+.climaDetails span{
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.climaDetails p{
+    font-size: 14px;
+    font-weight: 500;
+}
