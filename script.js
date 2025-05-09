@@ -38,6 +38,11 @@ search.addEventListener('click', () => {
                 image.src = 'assets/Nublado.PNG';
         }
 
+        temperatura.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+        descricao.innerHTML = `${json.weather[0].description}`;
+        umidade.innerHTML = `${json.main.humidity}%`;
+        vento.innerHTML = `${parseInt(json.wind.speed)}km/h`;
+
     });
 
 })
