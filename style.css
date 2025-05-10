@@ -18,13 +18,14 @@ body{
 .container{
     position: relative;
     width: 400px;
-    height: 555px;
+    height: 100px;
     background: rgba(255, 255, 255, .1);
     backdrop-filter: blur(30px);
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 16px;
     padding: 20px;
     color: white;
+    transition: height .6s ease;
 }
 
 .boxSearch{
@@ -80,6 +81,30 @@ body{
     margin: 40px 0;
 }
 
+.boxClima, 
+.climaDetails,
+.notFound{
+    overflow: hidden;
+    visibility: hidden;
+}
+.boxClima.active,
+.climaDetails.active,
+.notFound.active{
+    visibility: visible;
+}
+
+.boxClima .box,
+.notFound .box{
+    transform: translateY(-100%);
+}
+
+.boxClima.active .box,
+.notFound.active .box{
+    transform: translateY(0%);
+    transition: transform .1s ease;
+    transition-delay: .6s;  
+}
+
 .boxClima img{
     width: 60%;
 }
@@ -118,6 +143,14 @@ body{
     width: 50%;
     display: flex;
     align-items: center;
+    transform: translateY(-100%);
+}
+
+.climaDetails.active .umidade,
+.climaDetails.active .vento{
+    transform: translateY(0%);
+    transition: transform .1s ease;
+    transition-delay: 1.2s ;  
 }
 
 .climaDetails .umidade{
@@ -144,4 +177,24 @@ body{
 .climaDetails p{
     font-size: 14px;
     font-weight: 500;
+}
+
+.notFound{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 110px;
+}
+
+.notFound img{
+    width: 60%;
+
+}
+
+.notFound P{
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 12px;
 }

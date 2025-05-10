@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const search = document.querySelector('.boxSearch button');
 const boxClima = document.querySelector('.boxClima');
 const climaDetails = document.querySelector('.climaDetails');
+const erro = document.querySelector('.notFound');
 
 search.addEventListener('click', () => {
 
@@ -12,6 +13,20 @@ search.addEventListener('click', () => {
         return;
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`).then(response => response.json()).then(json => {
+        
+        if(json.cod == '404') {
+            container.style.height = '400px';
+            boxClima.classList.remove('active');
+            climaDetails.classList.remove('active');
+            erro.classList.add('active');
+            return;
+        }
+        
+        container.style.height = '555px';
+        boxClima.classList.add('active');
+        climaDetails.classList.add('active');
+        erro.classList.remove('active');
+        
         const image = document.querySelector('.boxClima img');
         const temperatura = document.querySelector('.boxClima .temperatura');
         const descricao = document.querySelector('.boxClima .descricao');
