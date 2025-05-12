@@ -105,6 +105,17 @@ body{
     transition-delay: .6s;  
 }
 
+.boxClima .box{
+    transform: translateY(-120%);   
+}
+
+.container.active .boxClima .box,
+.container.active .climaDetails .umidade .infoUmidade,
+.container.active .climaDetails .vento .infoVento{
+    transform: translateY(0%);
+    transition: transform 1s ease;
+}
+
 .boxClima img{
     width: 60%;
 }
@@ -153,6 +164,12 @@ body{
     transition-delay: 1.2s ;  
 }
 
+    .climaDetails .umidade .infoUmidade,
+    .climaDetails .vento .infoVento{
+    transform: translateY(-100%);
+    overflow: hidden;
+}
+
 .climaDetails .umidade{
     justify-content: flex-start;
     padding-left: 20px;
@@ -197,4 +214,8 @@ body{
     font-size: 22px;
     font-weight: 500;
     margin-top: 12px;
+}
+
+.city-hide{
+    display: none;
 }
