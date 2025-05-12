@@ -26,52 +26,42 @@ search.addEventListener('click', () => {
                 return;
             }
 
-            // Atualizar elementos com os dados da API
             const image = document.querySelector('.boxClima img');
             const temperatura = document.querySelector('.boxClima .temperatura');
             const descricao = document.querySelector('.boxClima .descricao');
             const umidade = document.querySelector('.climaDetails .umidade span');
             const vento = document.querySelector('.climaDetails .vento span');
 
-            // Atualizar apenas se a cidade for diferente
-            if (cityHide.textContent !== city) {
-                cityHide.textContent = city;
+            cityHide.textContent = city;
+            container.style.height = '555px';
+            boxClima.classList.add('active');
+            climaDetails.classList.add('active');
+            erro.classList.remove('active');
 
-                container.style.height = '555px';
-                boxClima.classList.add('active');
-                climaDetails.classList.add('active');
-                erro.classList.remove('active');
-
-                // Atualizar imagem do clima
-                switch (json.weather[0].main) {
-                    case 'Clear':
-                        image.src = 'assets/Sol.PNG';
-                        break;
-                    case 'Rain':
-                        image.src = 'assets/Chuva.PNG';
-                        break;
-                    case 'Snow':
-                        image.src = 'assets/nevando.PNG';
-                        break;
-                    case 'Clouds':
-                        image.src = 'assets/Nublado.PNG';
-                        break;
-                    case 'Mist':
-                        image.src = 'assets/mist.PNG';
-                        break;
-                    default:
-                        image.src = 'assets/Nublado.PNG';
-                }
-
-                // Atualizar valores de temperatura, descrição, umidade e vento
-                temperatura.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
-                descricao.innerHTML = `${json.weather[0].description}`;
-                umidade.textContent = `${json.main.humidity}%`;
-                vento.textContent = `${parseInt(json.wind.speed)}km/h`;
-
-                // Adicionar classe .active para exibir os elementos
-                climaDetails.classList.add('active');
+            switch (json.weather[0].main) {
+                case 'Clear':
+                    image.src = 'assets/Sol.PNG';
+                    break;
+                case 'Rain':
+                    image.src = 'assets/Chuva.PNG';
+                    break;
+                case 'Snow':
+                    image.src = 'assets/nevando.PNG';
+                    break;
+                case 'Clouds':
+                    image.src = 'assets/Nublado.PNG';
+                    break;
+                case 'Mist':
+                    image.src = 'assets/mist.PNG';
+                    break;
+                default:
+                    image.src = 'assets/Nublado.PNG';
             }
+
+            temperatura.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            descricao.innerHTML = `${json.weather[0].description}`;
+            umidade.textContent = `${json.main.humidity}%`;
+            vento.textContent = `${parseInt(json.wind.speed)}km/h`;
         })
         .catch(error => {
             console.error('Erro ao buscar os dados da API:', error);
