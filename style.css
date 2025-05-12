@@ -91,6 +91,9 @@ body{
 .climaDetails.active,
 .notFound.active{
     visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
+    transition: transform 1s ease, opacity 0.5s ease;
 }
 
 .boxClima .box,
@@ -218,4 +221,112 @@ body{
 
 .city-hide{
     display: none;
+}
+
+#cloneClimaDetails,
+#cloneInfoUmidade,
+#cloneInfoVento{
+    position: absolute;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+#cloneClimaDetails .clima{
+    transform: translateY(120%);
+    transition: transform 1s ease, opacity 0s;
+    transition-delay: 0s, 2s;
+}
+
+.boxClima:not(.active) #cloneClimaDetails .clima{
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.active-clone#cloneClimaDetails .clima{
+    transform: translateY(0%);
+}
+
+/* Estilos para os clones */
+#cloneClimaDetails,
+#cloneInfoUmidade,
+#cloneInfoVento {
+    position: absolute;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+/* Quando a classe active-clone é adicionada */
+.active-clone#cloneClimaDetails,
+.active-clone#cloneInfoUmidade,
+.active-clone#cloneInfoVento {
+    transform: translateY(0%);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilos para os elementos internos dos clones */
+#cloneClimaDetails .clima,
+#cloneInfoUmidade span,
+#cloneInfoVento span {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+/* Quando a classe active-clone é adicionada aos elementos internos */
+.active-clone#cloneClimaDetails .clima,
+.active-clone#cloneInfoUmidade span,
+.active-clone#cloneInfoVento span {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+/* Ajuste para os elementos principais */
+.boxClima.active,
+.climaDetails.active,
+.notFound.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+/* Elementos ocultos */
+.boxClima:not(.active) .box,
+.climaDetails:not(.active) .umidade,
+.climaDetails:not(.active) .vento {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+#cloneInfoUmidade span,
+#cloneInfoVento span {
+    transform: translateY(100%);
+    transition: transform 1s ease;
+}
+
+.active-clone#cloneInfoUmidade span,
+.active-clone#cloneInfoVento span{
+    transform: translateY(0%);
+}
+
+/* Garantir que os spans de umidade e vento fiquem visíveis quando ativos */
+.climaDetails.active .umidade span,
+.climaDetails.active .vento span {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Ocultar spans de umidade e vento quando não ativos */
+.climaDetails .umidade span,
+.climaDetails .vento span {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
